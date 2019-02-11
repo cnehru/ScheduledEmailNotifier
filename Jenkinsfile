@@ -90,8 +90,6 @@ try{
 				stage("Deployment by Ansible") {
 						ansible()
 				}
-				stage("mail notification")
-				      mail()
 				     	
 		}
 } finally {
