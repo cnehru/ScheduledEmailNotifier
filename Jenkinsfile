@@ -79,9 +79,7 @@ try{
 				    checkout()
 				}
 				
-				stage("Deployment by Ansible") {
-						ansible()
-				}
+				
 				     	
 		}
 } finally {
