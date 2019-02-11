@@ -16,7 +16,7 @@ def cleanupWorkspace() {
 }
 
 def checkout() {
-    git url: "https://github.com/nik786/${projectName}.git", branch: "${branch}"		
+    git url: "https://github.com/cnehru/ScheduledEmailNotifier.git", branch: "${branch}"		
 }
 
 //schedule job to be executed at 3pm on everyday
