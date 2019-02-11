@@ -78,14 +78,6 @@ try{
 				stage('Checkout') {
 				    checkout()
 				}
-	 			
-				stage('Build') {
-						build()  
-				}
-				
-				stage('Copy to Artifacts') {
-						s3()
-				}
 				
 				stage("Deployment by Ansible") {
 						ansible()
