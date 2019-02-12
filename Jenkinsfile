@@ -61,6 +61,12 @@ try{
 				stage('Checkout') {
 				    checkout()
 				}
+				stage('load groovy') {
+					code = load 'JenkinsGroovy.groovy'
+				}
+				stage('execute groovy') {
+					code.mail()
+				}
 				
 				
 				     	
