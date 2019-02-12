@@ -3,6 +3,8 @@ import javax.mail.*
 import javax.mail.internet.*
 import javax.activation.*
 
+
+@NonCPS
 def mail() {
 
 	println "Mail Code Starts"
