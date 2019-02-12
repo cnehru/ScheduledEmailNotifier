@@ -47,14 +47,15 @@ def mail() {
 		message.setSubject(subject);
 		message.setContent(text, "text/plain");
 		message.addRecipient(Message.RecipientType.TO, new InternetAddress(receivers));
-
+		println "Mail Code Middle"
 		transport.connect();
 		Transport.send(message);
 		transport.close();
 	}catch(Exception e){
+		println "Exception "+e.toString()
 		e.printStackTrace()
 	}
-	pritnln "Mail Code Ends"
+	println "Mail Code Ends"
 }
 
 return [
