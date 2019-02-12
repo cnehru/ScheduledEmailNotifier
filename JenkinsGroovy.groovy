@@ -56,5 +56,7 @@ def mail() {
 
 }
 
-
+return [
+	mail:this.mail()
+]
 
