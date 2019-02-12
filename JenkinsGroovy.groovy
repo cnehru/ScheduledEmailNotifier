@@ -3,7 +3,7 @@ import javax.mail.*
 import javax.mail.internet.*
 import javax.activation.*
 
-class EmailNotifier {
+class JenkinsGroovy {
 	def mail() {
 	
 		// Recipient's email ID needs to be mentioned.
