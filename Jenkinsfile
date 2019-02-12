@@ -41,7 +41,7 @@ def ansible() {
 }
 
 @NonCPS
-def mail(host, sender, receivers, subject, text) {
+def mail() {
     // Recipient's email ID needs to be mentioned.
 	def receivers = "cnehru22@gmail.com"
 	
