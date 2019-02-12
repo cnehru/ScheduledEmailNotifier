@@ -18,7 +18,7 @@ def mail() {
 
 	def text = "Test Email"
 
-	Properties props = new Properties();
+	def props = new Properties()
 	props.put("mail.smtp.host", host)
 	props.put("mail.transport.protocol", "smtp");
 	props.put("mail.host", "smtp.gmail.com");
@@ -56,7 +56,5 @@ def mail() {
 
 }
 
-return [
-	mail: this.mail()
-]
+
 
