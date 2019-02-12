@@ -5,6 +5,7 @@ import javax.activation.*
 
 def mail() {
 
+	println "Mail Code Starts"
 	// Recipient's email ID needs to be mentioned.
 	def receivers = "cnehru22@gmail.com"
 
@@ -53,7 +54,7 @@ def mail() {
 	}catch(Exception e){
 		e.printStackTrace()
 	}
-
+	pritnln "Mail Code Ends"
 }
 
 return [
