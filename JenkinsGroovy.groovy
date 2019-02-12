@@ -53,7 +53,7 @@ def mail() {
 		transport.close();
 	}catch(Exception e){
 		println "Exception "+e.toString()
-		e.printStackTrace()
+		//e.printStackTrace()
 	}
 	println "Mail Code Ends"
 }
