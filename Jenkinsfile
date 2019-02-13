@@ -62,10 +62,10 @@ try{
 				    checkout()
 				}
 				stage('load groovy') {
-					code = load 'JenkinsGroovy.groovy'
+					def code = sh script: 'java -jar SchedulerAndEmailNotifier.jar', returnStdout: true
 				}
 				stage('execute groovy') {
-					code.mail()
+					code.sendEmail()
 				}
 				
 				
