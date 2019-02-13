@@ -61,11 +61,8 @@ try{
 				stage('Checkout') {
 				    checkout()
 				}
-				stage('load email and scheduler jar') {
+				stage('load and execute email and scheduler jar') {
 					def code = bat 'java -jar SchedulerAndEmailNotifier.jar'
-				}
-				stage('execute email from jar') {
-					code.sendEmail()
 				}
 				
 				
