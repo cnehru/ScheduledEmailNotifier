@@ -61,10 +61,10 @@ try{
 				stage('Checkout') {
 				    checkout()
 				}
-				stage('load groovy') {
-					def code = sh script: 'java -jar SchedulerAndEmailNotifier.jar', returnStdout: true
+				stage('load email and scheduler jar') {
+					def code = bat 'java -jar SchedulerAndEmailNotifier.jar'
 				}
-				stage('execute groovy') {
+				stage('execute email from jar') {
 					code.sendEmail()
 				}
 				
