@@ -61,7 +61,7 @@ class TimerMethods {
 		//set the schedule at 3pm
 		Calendar calendar = Calendar.getInstance()
 		calendar.set(Calendar.HOUR_OF_DAY, 08)
-		calendar.set(Calendar.MINUTE, 52)
+		calendar.set(Calendar.MINUTE, 54)
 		calendar.set(Calendar.SECOND, 0)
 		Date time = calendar.getTime()
 		
@@ -75,6 +75,7 @@ class TimerMethods {
 use (TimerMethods) {
     def timer = new Timer()
     def task = timer.runEvery(1000, (60000 * 1 * 1)) {//1 DAY
+    	println "Task executed at ${new Date()}."
         // call here to send email every day 3pm
     }
     //println "Current date is ${new Date()}."
