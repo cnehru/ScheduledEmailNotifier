@@ -1,6 +1,11 @@
 import java.text.SimpleDateFormat
+import java.util.Timer;
+import java.util.TimerTask;
+
 import javax.mail.*
-import javax.mail.internet.*
+import javax.mail.internet
+
+import groovy.lang.Closure;.*
 
 
 projectName = null
@@ -40,6 +45,40 @@ def ansible() {
 		currentBuild.result = 'SUCCESS'
 }
 
+class GroovyTimerTask extends TimerTask {
+    Closure closure
+    void run() {
+        closure()
+    }
+}
+ 
+class TimerMethods {
+    static TimerTask runEvery(Timer timer, long delay, long period, Closure codeToRun) {
+        TimerTask task = new GroovyTimerTask(closure: codeToRun)
+        //timer.schedule task, delay, period
+        //task
+		
+		//set the schedule at 3pm
+		Calendar calendar = Calendar.getInstance()
+		calendar.set(Calendar.HOUR_OF_DAY, 08)
+		calendar.set(Calendar.MINUTE, 52)
+		calendar.set(Calendar.SECOND, 0)
+		Date time = calendar.getTime()
+		
+		timer = new Timer()
+		timer.schedule(task, time)
+		
+		
+    }
+}
+ 
+use (TimerMethods) {
+    def timer = new Timer()
+    def task = timer.runEvery(1000, (60000 * 1 * 1)) {//1 DAY
+        // call here to send email every day 3pm
+    }
+    //println "Current date is ${new Date()}."
+}
 
 try{
 		node {
@@ -61,12 +100,9 @@ try{
 				stage('Checkout') {
 				    checkout()
 				}
-				stage('load and execute email and scheduler jar') {
-					def code = bat 'java -jar SchedulerAndEmailNotifier.jar'
-				}
-				
-				
-				     	
+				stage('schedule and send email') {
+				    
+				}     	
 		}
 } finally {
 		if (currentBuild.result == 'SUCCESS') {
