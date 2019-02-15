@@ -51,18 +51,16 @@ class GroovyTimerTask extends TimerTask {
 class TimerMethods {
     static TimerTask runEvery(Timer timer, long delay, long period, Closure codeToRun) {
         TimerTask task = new GroovyTimerTask(closure: codeToRun)
-        //timer.schedule task, delay, period
-        //task
 		
 		//set the schedule at 3pm
 		Calendar calendar = Calendar.instance
-		calendar[Calendar.HOUR_OF_DAY]= 09
-1		calendar[Calendar.MINUTE]= 06
+		calendar[Calendar.HOUR_OF_DAY]= 10
+		calendar[Calendar.MINUTE]= 18
 		calendar[Calendar.SECOND]= 0
 		Date time = calendar.time
 		
-		timer = new Timer()
-		timer.schedule(task, time)
+		timer.schedule task, time, (60000 * 1 * 1)		
+		task
 		
 		
     }
@@ -74,7 +72,7 @@ use (TimerMethods) {
     	println "Task executed at ${new Date()}."
         // call here to send email every day 3pm
     }
-    //println "Current date is ${new Date()}."
+    println "Current date is ${new Date()}."
 }
 
 try{
