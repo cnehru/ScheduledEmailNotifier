@@ -1,7 +1,4 @@
 import java.text.SimpleDateFormat
-import java.util.Timer;
-import java.util.TimerTask;
-
 
 import groovy.lang.Closure
 import static java.util.Calendar.*
