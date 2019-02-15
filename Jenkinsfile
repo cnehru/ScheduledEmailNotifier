@@ -5,7 +5,7 @@ import java.util.TimerTask;
 import javax.mail.*
 import javax.mail.internet
 
-import groovy.lang.Closure;.*
+import groovy.lang.Closure;
 
 
 projectName = null
@@ -61,7 +61,7 @@ class TimerMethods {
 		//set the schedule at 3pm
 		Calendar calendar = Calendar.getInstance()
 		calendar.set(Calendar.HOUR_OF_DAY, 08)
-		calendar.set(Calendar.MINUTE, 54)
+		calendar.set(Calendar.MINUTE, 56)
 		calendar.set(Calendar.SECOND, 0)
 		Date time = calendar.getTime()
 		
