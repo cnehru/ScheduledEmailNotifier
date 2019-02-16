@@ -4,10 +4,7 @@ import java.util.TimerTask;
 import java.util.Calendar;
 
 public class Scheduler extends TimerTask {
-	private final static long ONCE_PER_DAY = 1000*60*60*24;
-
-	//private final static int ONE_DAY = 1;
-	private final static int THREE_PM = 11;
+	
 
 
 	@Override
@@ -19,7 +16,7 @@ public class Scheduler extends TimerTask {
 	private static Date getTime3PM(){
 
 		Calendar calendar = Calendar.instance;
-		calendar[Calendar.HOUR_OF_DAY]= THREE_PM;
+		calendar[Calendar.HOUR_OF_DAY]= 3;
 		calendar[Calendar.MINUTE] = 0;
 		calendar[Calendar.SECOND] = 0;
 		Date time = calendar.time
