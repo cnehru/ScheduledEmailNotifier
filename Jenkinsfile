@@ -17,8 +17,9 @@ def cleanupWorkspace() {
 }
 
 def checkout() {
-       git.groovy
-	   //git url: "https://github.com/cnehru/ScheduledEmailNotifier.git", branch: "${branch}"	
+       def code = load 'git.groovy'
+       code.checkout
+       //git url: "https://github.com/cnehru/ScheduledEmailNotifier.git", branch: "${branch}"	
 }
 
 class Scheduler extends TimerTask {
