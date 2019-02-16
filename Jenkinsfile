@@ -1,7 +1,8 @@
 import java.text.SimpleDateFormat
-
-import groovy.lang.Closure
-import static java.util.Calendar.*
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Calendar;
 
 
 projectName = null
@@ -41,39 +42,39 @@ def ansible() {
 		currentBuild.result = 'SUCCESS'
 }
 
-class GroovyTimerTask extends TimerTask {
-    Closure closure
-    void run() {
-        closure()
-    }
+class Scheduler extends TimerTask {
+	private final static long ONCE_PER_DAY = 1000*60*60*24;
+
+	//private final static int ONE_DAY = 1;
+	private final static int THREE_PM = 11;
+
+
+	@Override
+	public void run() {
+		println "Task executed at ${new Date()}."
+	}
+	private static Date getTime3PM(){
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.HOUR_OF_DAY, THREE_PM);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+		Date time = calendar.getTime();
+		println "Task scheduled at ${new Date()}."
+		return time;
+	}
+
+	public static void startTask(){
+		Scheduler task = new Scheduler();
+		Timer timer = new Timer();
+		timer.schedule(task,getTime3PM(),60000);
+	}
+	static main(args) {
+		startTask()
+	}
+
 }
- 
-class TimerMethods {
-    static TimerTask runEvery(Timer timer, long delay, long period, Closure codeToRun) {
-        TimerTask task = new GroovyTimerTask(closure: codeToRun)
-		
-		//set the schedule at 3pm
-		Calendar calendar = Calendar.instance
-		calendar[Calendar.HOUR_OF_DAY]= 10
-		calendar[Calendar.MINUTE]= 18
-		calendar[Calendar.SECOND]= 0
-		Date time = calendar.time
-		
-		timer.schedule task, time, (60000 * 1 * 1)		
-		task
-		
-		
-    }
-}
- 
-use (TimerMethods) {
-    def timer = new Timer()
-    def task = timer.runEvery(1000, (60000 * 1 * 1)) {//1 DAY
-    	println "Task executed at ${new Date()}."
-        // call here to send email every day 3pm
-    }
-    println "Current date is ${new Date()}."
-}
+
 
 try{
 		node {
@@ -95,8 +96,8 @@ try{
 				stage('Checkout') {
 				    checkout()
 				}
-				stage('schedule and send email') {
-				    
+				stage('schedule') {
+				    this.startTask();
 				}     	
 		}
 } finally {
