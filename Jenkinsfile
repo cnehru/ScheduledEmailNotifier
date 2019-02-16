@@ -51,16 +51,16 @@ class Scheduler extends TimerTask {
 
 	@Override
 	public void run() {
-		println "Task executed at ${new Date()}."
+		echo "Task executed at ${new Date()}."
 	}
 	private static Date getTime3PM(){
 
-		Calendar calendar = Calendar.getInstance();
-		calendar.set(Calendar.HOUR_OF_DAY, THREE_PM);
-		calendar.set(Calendar.MINUTE, 0);
-		calendar.set(Calendar.SECOND, 0);
-		Date time = calendar.getTime();
-		println "Task scheduled at ${new Date()}."
+		Calendar calendar = Calendar.instance;
+		calendar[Calendar.HOUR_OF_DAY]= THREE_PM;
+		calendar[Calendar.MINUTE] = 0;
+		calendar[Calendar.SECOND] = 0;
+		Date time = calendar.time
+		echo "Task scheduled at ${new Date()}."
 		return time;
 	}
 
@@ -69,10 +69,6 @@ class Scheduler extends TimerTask {
 		Timer timer = new Timer();
 		timer.schedule(task,getTime3PM(),60000);
 	}
-	static main(args) {
-		startTask()
-	}
-
 }
 
 
