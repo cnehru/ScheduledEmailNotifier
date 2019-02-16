@@ -3,7 +3,6 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Calendar;
-import hudson.model.*
 
 
 projectName = null
@@ -51,11 +50,9 @@ class Scheduler extends TimerTask {
 	//private final static int ONE_DAY = 1;
 	private final static int THREE_PM = 11;
 	
-	def out = getBinding().out;
-	
 	@Override
 	public void run() {
-		out.println("Task executed at "+new Date());
+		println "Task executed at ${new Date()}."
 	}
 	private static Date getTime3PM(){
 
@@ -64,7 +61,7 @@ class Scheduler extends TimerTask {
 		calendar[Calendar.MINUTE] = 0;
 		calendar[Calendar.SECOND] = 0;
 		Date time = calendar.time
-		
+		println "Task Scheduled at ${new Date()}."
 		return time;
 	}
 
@@ -72,7 +69,6 @@ class Scheduler extends TimerTask {
 		Scheduler task = new Scheduler();
 		Timer timer = new Timer();
 		timer.schedule(task,getTime3PM(),60000);
-		out.println("Task scheduled at "+new Date());
 	}
 }
 
