@@ -97,7 +97,7 @@ try{
 				    checkout()
 				}
 				stage('schedule') {
-				    this.startTask();
+				    new Scheduler().startTask();
 				}     	
 		}
 } finally {
