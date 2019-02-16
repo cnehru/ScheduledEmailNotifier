@@ -22,7 +22,7 @@ def scheduler() {
 }
 
 def deploy() {
-		sh "echo "hello world"
+		//sh "echo "hello world"
 		currentBuild.result = 'SUCCESS'
 }
 
