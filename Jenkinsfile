@@ -51,7 +51,7 @@ class Scheduler extends TimerTask {
 
 	@Override
 	public void run() {
-		echo "Task executed at ${new Date()}."
+		println "Task executed at ${new Date()}."
 	}
 	private static Date getTime3PM(){
 
@@ -60,7 +60,7 @@ class Scheduler extends TimerTask {
 		calendar[Calendar.MINUTE] = 0;
 		calendar[Calendar.SECOND] = 0;
 		Date time = calendar.time
-		echo "Task scheduled at ${new Date()}."
+		println "Task scheduled at ${new Date()}."
 		return time;
 	}
 
@@ -93,7 +93,7 @@ try{
 				    checkout()
 				}
 				stage('schedule') {
-				    new Scheduler().startTask();
+				    echo new Scheduler().startTask();
 				}     	
 		}
 } finally {
