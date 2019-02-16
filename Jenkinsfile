@@ -37,7 +37,8 @@ try{
 					    //checkout()
 					}
 	                stage("schedule job") {
-	                      scheduler() 
+	                	def code = load 'Scheduler.groovy'
+	                	code.startTask();
 	                }
 		 			stage("Deployment") {
 							//deploy()
