@@ -19,7 +19,7 @@ def checkout() {
 
 def scheduler() {
           def code = load 'Scheduler.groovy'
-          code.startTask();
+          
 
 }
 
