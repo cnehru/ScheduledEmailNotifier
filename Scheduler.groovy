@@ -29,6 +29,9 @@ public class Scheduler extends TimerTask {
 		Timer timer = new Timer();
 		timer.schedule(task,getTime3PM(),60000);
 	}
+	return [
+    		startTask: this.&startTask
+	]
 
 
 
