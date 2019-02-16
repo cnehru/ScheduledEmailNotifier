@@ -13,7 +13,7 @@ def cleanupWorkspace() {
 }
 
 def checkout() {
-       //    git.groovy		
+       		git.groovy		
 }
 
 def scheduler() {
@@ -33,13 +33,13 @@ node {
 				}
 				
 				stage('Checkout') {
-				    checkout()
+				    //checkout()
 				}
                 stage("schedule job") {
                       scheduler() 
                 }
 	 			stage("Deployment") {
-						deploy()
+						//deploy()
 				}	
 		}
 } finally {
