@@ -26,22 +26,22 @@ def deploy() {
 		currentBuild.result = 'SUCCESS'
 }
 
-
-node {
-				stage('Cleanup workspace') {
-						cleanupWorkspace()
-				}
-				
-				stage('Checkout') {
-				    //checkout()
-				}
-                stage("schedule job") {
-                      scheduler() 
-                }
-	 			stage("Deployment") {
-						//deploy()
-				}	
-		}
+try{
+	node {
+					stage('Cleanup workspace') {
+							cleanupWorkspace()
+					}
+					
+					stage('Checkout') {
+					    //checkout()
+					}
+	                stage("schedule job") {
+	                      scheduler() 
+	                }
+		 			stage("Deployment") {
+							//deploy()
+					}	
+			}
 } finally {
 		if (currentBuild.result == 'SUCCESS') {
 				stage("Announce") {}
