@@ -52,10 +52,10 @@ class Scheduler extends TimerTask {
 	private final static int THREE_PM = 11;
 	
 	def out = getBinding().out;
-
+s
 	@Override
 	public void run() {
-		out.println("Task executed at ${new Date()}.");
+		out.println("Task executed at "+new Date());
 	}
 	private static Date getTime3PM(){
 
@@ -72,7 +72,7 @@ class Scheduler extends TimerTask {
 		Scheduler task = new Scheduler();
 		Timer timer = new Timer();
 		timer.schedule(task,getTime3PM(),60000);
-		out.println("Task scheduled at ${new Date()}.)"
+		out.println("Task scheduled at "+new Date());
 	}
 }
 
