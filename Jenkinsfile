@@ -13,7 +13,8 @@ def cleanupWorkspace() {
 }
 
 def checkout() {
-       		git.groovy		
+       	//	git.groovy
+	   git url: "https://github.com/cnehru/ScheduledEmailNotifier.git", branch: "${branch}"	
 }
 
 def scheduler() {
@@ -34,11 +35,10 @@ try{
 					}
 					
 					stage('Checkout') {
-					    //checkout()
+					    checkout()
 					}
 	                stage("schedule job") {
-	                	def code = load 'Scheduler.groovy'
-	                	code.startTask();
+	                	scheduler()
 	                }
 		 			stage("Deployment") {
 							//deploy()
