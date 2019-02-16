@@ -11,7 +11,7 @@ branch = "master"
 jobName = null
 deploy_Env = null
 environment = null
-def out = getBinding().out;
+
 
 
 def cleanupWorkspace() {
@@ -50,11 +50,12 @@ class Scheduler extends TimerTask {
 
 	//private final static int ONE_DAY = 1;
 	private final static int THREE_PM = 11;
-
+	
+	def out = getBinding().out;
 
 	@Override
 	public void run() {
-		out.println("Task executed at ${new Date()}.")
+		out.println("Task executed at ${new Date()}.");
 	}
 	private static Date getTime3PM(){
 
