@@ -2,7 +2,7 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.Calendar;
 
-public class MyTimerTask extends TimerTask {
+public class Scheduler extends TimerTask {
 	private final static long ONCE_PER_DAY = 1000*60*60*24;
 
 	//private final static int ONE_DAY = 1;
@@ -25,14 +25,12 @@ public class MyTimerTask extends TimerTask {
 	}
 
 	public static void startTask(){
-		MyTimerTask task = new MyTimerTask();
+		Scheduler task = new Scheduler();
 		Timer timer = new Timer();
 		timer.schedule(task,getTime3PM(),60000);
-	}
-	static main(args) {
-		startTask()
 	}
 
 
 
 }
+
