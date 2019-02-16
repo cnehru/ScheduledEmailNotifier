@@ -52,7 +52,7 @@ class Scheduler extends TimerTask {
 	private final static int THREE_PM = 11;
 	
 	def out = getBinding().out;
-s
+	
 	@Override
 	public void run() {
 		out.println("Task executed at "+new Date());
