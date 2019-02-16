@@ -1,4 +1,8 @@
 import java.text.SimpleDateFormat
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Calendar;
 
 projectName = null
 branch = "master"
@@ -16,11 +20,31 @@ def checkout() {
        	//	git.groovy
 	   git url: "https://github.com/cnehru/ScheduledEmailNotifier.git", branch: "${branch}"	
 }
-@NonCPS 
-def scheduler() {
-         code = load 'Scheduler.groovy'
-          
 
+class Scheduler extends TimerTask {
+	private final static long ONCE_PER_DAY = 1000*60*60*24;
+	private final static int THREE_PM = 3;
+	
+	@Override
+	public void run() {
+		println "Task executed at ${new Date()}."
+	}
+	private static Date getTime3PM(){
+
+		Calendar calendar = Calendar.instance;
+		calendar[Calendar.HOUR_OF_DAY]= THREE_PM;
+		calendar[Calendar.MINUTE] = 0;
+		calendar[Calendar.SECOND] = 0;
+		Date time = calendar.time
+		println "Task Scheduled at ${new Date()}."
+		return time;
+	}
+
+	public static void startTask(){
+		Scheduler task = new Scheduler();
+		Timer timer = new Timer();
+		timer.schedule(task,getTime3PM(),ONCE_PER_DAY);
+	}
 }
 
 def deploy() {
@@ -38,7 +62,7 @@ try{
 					    checkout()
 					}
 	                stage("schedule job") {
-	                	scheduler()
+	                	new Scheduler().startTask()
 	                }
 		 			stage("Deployment") {
 							//deploy()
