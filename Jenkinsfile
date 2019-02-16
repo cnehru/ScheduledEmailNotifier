@@ -16,7 +16,7 @@ def checkout() {
        	//	git.groovy
 	   git url: "https://github.com/cnehru/ScheduledEmailNotifier.git", branch: "${branch}"	
 }
-
+@NonCPS 
 def scheduler() {
          code = load 'Scheduler.groovy'
           
