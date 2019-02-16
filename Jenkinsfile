@@ -3,6 +3,7 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Calendar;
+import hudson.model.*
 
 
 projectName = null
@@ -10,6 +11,8 @@ branch = "master"
 jobName = null
 deploy_Env = null
 environment = null
+def out = getBinding().out;
+
 
 def cleanupWorkspace() {
 	  dir('.') {
@@ -51,7 +54,7 @@ class Scheduler extends TimerTask {
 
 	@Override
 	public void run() {
-		println "Task executed at ${new Date()}."
+		out.println "Task executed at ${new Date()}."
 	}
 	private static Date getTime3PM(){
 
@@ -60,7 +63,7 @@ class Scheduler extends TimerTask {
 		calendar[Calendar.MINUTE] = 0;
 		calendar[Calendar.SECOND] = 0;
 		Date time = calendar.time
-		println "Task scheduled at ${new Date()}."
+		out.println "Task scheduled at ${new Date()}."
 		return time;
 	}
 
@@ -93,7 +96,7 @@ try{
 				    checkout()
 				}
 				stage('schedule') {
-				    echo new Scheduler().startTask();
+				    new Scheduler().startTask();
 				}     	
 		}
 } finally {
