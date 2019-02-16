@@ -2,7 +2,7 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Calendar;
-
+@NonCPS
 public class Scheduler extends TimerTask {
 	private final static long ONCE_PER_DAY = 1000*60*60*24;
 
