@@ -63,7 +63,7 @@ class Scheduler extends TimerTask {
 		calendar[Calendar.MINUTE] = 0;
 		calendar[Calendar.SECOND] = 0;
 		Date time = calendar.time
-		out.println("Task scheduled at ${new Date()}.)"
+		
 		return time;
 	}
 
@@ -71,6 +71,7 @@ class Scheduler extends TimerTask {
 		Scheduler task = new Scheduler();
 		Timer timer = new Timer();
 		timer.schedule(task,getTime3PM(),60000);
+		out.println("Task scheduled at ${new Date()}.)"
 	}
 }
 
